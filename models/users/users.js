@@ -18,13 +18,14 @@ Users.init(
         passwordhash: {
             type: DataTypes.//not sure yet
 },
+//link to database connection
 {
   sequelize,
   timestamps: false,
   freezeTableName: true,
   underscored: true,
-  modelName: 'book'
-}
+  modelName: 'users'
+}}
 );
 
 module.exports = Users;
