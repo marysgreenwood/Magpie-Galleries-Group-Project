@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { Users } = require('../../models');
+const { Users, Art } = require('../../models');
+
+//get route to find works by artist
 
 router.post('/newUser', async (req, res) => {
     try {
