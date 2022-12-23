@@ -1,10 +1,9 @@
 # Magpie Gallery
-
 <img src="./public/img/magpie.jpg" alt="Picture of Magpie Gallery App" width="100%">
 
 ## Description
 
-Insert description here. 
+This art-sharing application allows artists to upload their work and allows art enthusiasts to view the work of contemporary artists.
 
 ## Table of Contents
   - [Getting Started](#getting-started)
