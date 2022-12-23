@@ -12,11 +12,23 @@ Users.init(
             primaryKey: true,
             autoIncrement: true
   },
+        prounouns: {
+            type: DataTypes.STRING
+},
         username: {
             type: DataTypes.STRING
   },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+   /*         validate: {
+                notNull: {
+                    msg:
+                }
+            }*/
+},
         passwordhash: {
-            type: DataTypes.//not sure yet
+            type: DataTypes.STRING
 },
 //link to database connection
 {
