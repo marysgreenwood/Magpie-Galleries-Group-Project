@@ -7,7 +7,7 @@
 Insert description here. 
 
 ## Table of Contents
-  - [Getting Started](#getting)
+  - [Getting Started](#getting-started)
   - [Authors](#authors)
   - [License](#license)
   </ul>
