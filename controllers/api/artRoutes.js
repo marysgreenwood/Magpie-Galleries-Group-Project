@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const multer = require('multer');
 const { Art } = require('../../models');
-//const upload = multer({ dest: "uploads/" });
+const upload = multer({ dest: "../assets/user-art"});
 
 //post route to add new art
 
