@@ -1,4 +1,4 @@
-const { Model, DateTypes } = require('sequalize');
+const { Model, DateTypes } = require('sequelize');
 
 const sequelize = require(/*insert location of env js path*/);
 
@@ -31,13 +31,13 @@ Users.init(
             type: DataTypes.STRING
 },
 //link to database connection
-{
+
   sequelize,
   timestamps: false,
   freezeTableName: true,
   underscored: true,
   modelName: 'users'
-}}
+}
 );
 
 module.exports = Users;
