@@ -1,6 +1,6 @@
-const { Model, DateTypes } = require('sequelize');
-
-const sequelize = require(/*insert location of env js path*/);
+const { Model, DateTypes, DataTypes } = require('sequelize');
+const sequelize = require('../../config/connection');
+//const sequelize = require(/*insert location of env js path*/);
 
 class Users extends Model {}
 
@@ -30,9 +30,10 @@ Users.init(
         passwordhash: {
             type: DataTypes.STRING
 },
-//link to database connection
+},
+//link to database connection}
 
-  sequelize,
+ { sequelize,
   timestamps: false,
   freezeTableName: true,
   underscored: true,

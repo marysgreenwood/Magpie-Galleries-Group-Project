@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
-const { TABLOCK } = require('sequelize/types/table-hints');
+//const { TABLOCK } = require('sequelize/types/table-hints');
 
 class Art extends Model {}
 
