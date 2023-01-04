@@ -24,6 +24,20 @@ router.get ('/:username', async (req, res) =>{
 })
 
 //get route to search by keyword
+router.get ('/:keyword', async (res, req) => {
+    try {
+        const searchByKeyword = await Art.findAll({
+            where: {
+             description: {
+                [Op.substring]: req.params.keyword
+             }
+            }
+        });
+        res.status(200).json(searchByKeyword);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
 
 //post route to add new art
 //add withauth helper, figure out how to access userID for Art.Create
