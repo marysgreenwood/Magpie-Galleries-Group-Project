@@ -1,10 +1,32 @@
 const router = require('express').Router();
 const multer = require('multer');
-const { Art } = require('../../models');
-const upload = require("../../utils/upload")
+const { User, Art } = require('../../models');
+const upload = require("../../utils/upload");
+
+//get route to search for work by artist
+
+router.get ('/:username', async (req, res) =>{
+    try {
+        const searchByUser= await User.findAll({
+            where: {
+                username: req.params.username
+            }
+        }, 
+        {
+           include: [{model: Art}]
+        });
+        res.status(200).json(searchByUser);
+        //how to display artwork
+    } catch(err){
+        res.status(400).json(err);
+    }
+
+})
+
+//get route to search by keyword
 
 //post route to add new art
-
+//add withauth helper, figure out how to access userID for Art.Create
 router.post ('/upload', upload.single("file"), async (req, res) => {
     try{
         const newArt= req.body;
@@ -45,7 +67,7 @@ router.delete (':id', async (req, res) => {
         });
         res.status(200).json(deletedArt)
 
-    }catch(err){
+    } catch(err){
         res.status(400).json(err);
     }
 });

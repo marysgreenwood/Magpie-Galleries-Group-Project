@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { Users, Art } = require('../../models');
+const { User, Art } = require('../../models');
 
 //get route to find works by artist
 
