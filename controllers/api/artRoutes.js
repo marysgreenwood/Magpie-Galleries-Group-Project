@@ -1,6 +1,8 @@
 const router = require('express').Router();
+const { User, Art } = require('../../models');
 const { Userss, Art } = require('../../models');
 const upload = require("../../utils/upload");
+const path = require('path');
 const path = require('path');
 const path = require('path');
 
@@ -18,11 +20,6 @@ router.get ('/:username', async (req, res) =>{
         {
            include: [{model: Art}]
         });
-        res.status(200).json(searchByUser)
-         //HOW TO DISPLAY ALL ART (FOR EACH?)
-       //res.sendFile(path.join(`${__dirname}/../views/index.html`));
-       console.log(searchByUser);
-       
         res.status(200).json(searchByUser)
          //HOW TO DISPLAY ALL ART (FOR EACH?)
        //res.sendFile(path.join(`${__dirname}/../views/index.html`));
