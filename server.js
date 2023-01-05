@@ -9,6 +9,9 @@ var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
+const app = express();
+const PORT = process.env.PORT || 3001;
+
 // Create the Handlebars.js engine object with custom helper functions
 //WHICH DO WE USE?
 const hbs = exphbs.create({ helpers });
