@@ -3,14 +3,25 @@
 ## MUST INSTALL FOLLOWING node-modules
 
 body-parser
+
 cookie-parser
+
 morgan
+
 hbs
-bcrypt 
+
+bcrypt
+
 dcrypt
+
 dotenv
+
 mysql2
+
 express-session
+
 express-handlebars
+
 sequelize
+
 mysql
