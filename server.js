@@ -6,8 +6,8 @@ const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 var session = require('express-session');
 var cookieParser = require('cookie-parser');
-
-
+var morgan = require('morgan');
+var bodyParser = require('body-parser');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
