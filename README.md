@@ -1,6 +1,6 @@
 # Spaghetti-on-the-Wall-Project
 
-## MUST INSTALL FOLLOWING node-modules
+## Install these node-modules
 
 body-parser
 
