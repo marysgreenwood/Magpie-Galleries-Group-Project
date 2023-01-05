@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Search</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+        <link href="/public/css/style.css" type="text/css" rel="stylesheet">
+        <script src="/public/js/hbsearch.js"></script>
+        <script id="searchTemp" type="text/x-handlebars-template">
+    </head>
+    <header>
+        <button></button>
+        <button></button>
+        <button></button>
+        <img src="" alt="">
+    </header>
+    <body>
+        <p>Results for "{{searched}}"</p>
+        {{#each insertArray}}
+        <div class="card">
+            <img src="{{imagesrc}}" alt="{{description}}" style="width:100%">
+            <div class="container">
+                <p>{{title}}</p>
+                <p>{{user}}</p>
+                <p>{{type}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </body>
