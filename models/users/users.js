@@ -1,4 +1,4 @@
-const { Model, DateTypes, DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../../config/connection');
 //const sequelize = require(/*insert location of env js path*/);
 
