@@ -13,6 +13,9 @@ var path = require('path');
 var app = express();
 var hbs = exphbs.create({ /* config */ })
 
+// Register `hbs.engine` with the Express app.
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
 // set our application port
 app.set('port', 9000);
@@ -38,8 +41,7 @@ app.use(session({
 }));
 
 // handle bars config
-//app.engine('handlebars', hbs.engine);
-app.engine('hbs', exphbs.engine({extname: 'hbs',defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'})); 
+app.engine('handlebars', hbs.engine);
 app.set('views', path.join(__dirname, 'views')); 
 app.set('view engine', 'hbs'); 
 // This middleware will check if user's cookie is still saved in browser and user is not set, then automatically log the user out.
@@ -190,4 +192,4 @@ app.use(function (req, res, next) {
 
 
 // start the express server
-app.listen(app.get('port'), () => console.log(`Server listening on: http://localhost:${app.get('port')}`));
+app.listen(app.get('port'), () => console.log(console.log(`Server listening on: http://localhost:${app.get('port')}`)));

@@ -1,16 +1,27 @@
 # Spaghetti-on-the-Wall-Project
 
-## MUST INSTALL FOLLOWING node-modules
+## Install these node-modules
 
 body-parser
+
 cookie-parser
+
 morgan
+
 hbs
-bcrypt 
+
+bcrypt
+
 dcrypt
+
 dotenv
+
 mysql2
+
 express-session
+
 express-handlebars
+
 sequelize
+
 mysql
