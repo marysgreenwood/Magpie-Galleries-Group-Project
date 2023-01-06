@@ -13,12 +13,11 @@ This art-sharing application allows artists to upload their work and allows art 
   </ul>
 
 ## Getting Started
-
-Where to find and how to deploy.
-
 <a href="placeholder">Magpie Gallery</a>
 <br></br>
 <a href="https://github.com/marysgreenwood/Spaghetti-on-the-Wall-Project">Magpie Gallery GitHub Repository</a>
+<br></br>
+To get started click the the link "Magpie Gallery" located in this section directly above this text. Once you have been redirect to Magpie Gallery you will be faced with an intuitive user experice. Explore the many options available to on the main page. After exploring, feel free to return here to follow the link to our GitHub repository to examine our process & code in more detail.
 
 ## Technology
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
