@@ -7,6 +7,7 @@ This art-sharing application allows artists to upload their work and allows art 
 
 ## Table of Contents
   - [Getting Started](#getting-started)
+  - [Technology](#technology)
   - [Authors](#authors)
   - [License](#license)
   </ul>
@@ -18,6 +19,24 @@ Where to find and how to deploy.
 <a href="placeholder">Magpie Gallery</a>
 <br></br>
 <a href="https://github.com/marysgreenwood/Spaghetti-on-the-Wall-Project">Magpie Gallery GitHub Repository</a>
+
+## Technology
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+<br></br>
+
+![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=for-the-badge&logo=Sequelize&logoColor=white)
+<br></br>
+
+![MySQL](https://img.shields.io/badge/mysql-%2300f.svg?style=for-the-badge&logo=mysql&logoColor=white)
+![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+
+We also utilized a new technology, for us, Multer. Multer is a npm package that makes it easy to upload files by handling multipart/form-data.
+<br></br>
 
 ## Authors
 
@@ -58,6 +77,7 @@ Where to find and how to deploy.
 <a href="https://github.com/ghostofthemill">GitHub: GhostoftheMill</a>
 
 ## License
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <pre>
 The MIT License
 
