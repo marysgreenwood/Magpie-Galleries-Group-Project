@@ -1,6 +1,5 @@
 //app.use(require('./controllers/artist-routes'));
 
-
 var express = require('express');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
@@ -14,9 +13,6 @@ var path = require('path');
 var app = express();
 var hbs = exphbs.create({ /* config */ })
 
-// Register `hbs.engine` with the Express app.
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
 
 // set our application port
 app.set('port', 9000);
@@ -42,7 +38,8 @@ app.use(session({
 }));
 
 // handle bars config
-app.engine('handlebars', hbs.engine);
+//app.engine('handlebars', hbs.engine);
+app.engine('hbs', exphbs.engine({extname: 'hbs',defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'})); 
 app.set('views', path.join(__dirname, 'views')); 
 app.set('view engine', 'hbs'); 
 // This middleware will check if user's cookie is still saved in browser and user is not set, then automatically log the user out.
@@ -54,7 +51,7 @@ app.use((req, res, next) => {
     next();
 });
 
-var hbsContent = {userName: '', loggedin: false, title: "You are not logged in today", body: "Hello World"}; 
+var hbsContent = {userName: '', userEmail: '', loggedin: false, title: "You are not logged in today", body: "Hello World"}; 
 
 // middleware function to check for logged-in users
 var sessionChecker = (req, res, next) => {
@@ -83,7 +80,7 @@ app.route('/signup')
     .post((req, res) => {
         User.create({
             username: req.body.username,
-            //email: req.body.email,
+            email: req.body.email,
             password: req.body.password
         })
         .then(user => {
@@ -94,7 +91,6 @@ app.route('/signup')
             res.redirect('/signup');
         });
     });
-
 
 // route for user Login
 app.route('/login')
@@ -123,9 +119,8 @@ app.route('/login')
 app.get('/dashboard', (req, res) => {
     if (req.session.user && req.cookies.user_sid) {
 		hbsContent.loggedin = true; 
-		hbsContent.userName = req.session.user.username; 
-		//console.log(JSON.stringify(req.session.user)); 
-		console.log(req.session.user.username); 
+        hbsContent.userEmail = req.session.user.email;
+		hbsContent.userName = req.session.user.username;  
 		hbsContent.title = "You are logged in"; 
         //res.sendFile(__dirname + '/public/dashboard.html');
         res.render('index', hbsContent);
@@ -140,7 +135,7 @@ app.get('/logout', (req, res) => {
     if (req.session.user && req.cookies.user_sid) {
 		hbsContent.loggedin = false; 
 		hbsContent.title = "You are logged out!"; 
-        res.clearCookie('user_sid');
+    res.clearCookie('user_sid');
 		console.log(JSON.stringify(hbsContent)); 
         res.redirect('/');
     } else {
@@ -148,6 +143,45 @@ app.get('/logout', (req, res) => {
     }
 });
 
+// route for user editting profile
+app.route('/edit-profile')
+    //.get(sessionChecker, (req, res) => {
+    .get((req, res) => {
+        //res.sendFile(__dirname + '/public/signup.html');
+        res.render('edit-profile', hbsContent);
+    })
+    .post((req, res) => {
+    var email =  req.session.user.email;
+    var username = req.body.username;
+    var oldPassword = req.body.oldPassword;
+    var firstPW = req.body.firstPassword;
+    var secondPW = req.body.secondPassword;
+    User.findOne({ where: { email: email } }).then(function (user) {
+    if (!firstPW == secondPW) {
+        res.redirect('/edit-profile');
+    }
+    else if (!user.validPassword(oldPassword)) {
+        res.redirect('/edit-profile');
+    }
+    else{
+        user.update(
+            {
+                username: username,
+                password: firstPW,
+              },
+              {
+                where: {
+                  email: email,
+                },
+              }
+            )
+              .then(() => {
+                res.redirect('/dashboard')
+              })
+              .catch((err) => res.json(err));
+          }
+    })
+        });    
 
 // route for handling 404 requests(unavailable routes)
 app.use(function (req, res, next) {
@@ -156,4 +190,4 @@ app.use(function (req, res, next) {
 
 
 // start the express server
-app.listen(app.get('port'), () => console.log(console.log(`Server listening on: http://localhost:${app.get('port')}`)));
+app.listen(app.get('port'), () => console.log(`Server listening on: http://localhost:${app.get('port')}`));

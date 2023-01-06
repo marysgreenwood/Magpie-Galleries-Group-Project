@@ -32,6 +32,7 @@ Artist.init(
       validate: {
         isEmail: true,
       },
+      allowNull: false,
     },
   },
   {
@@ -48,6 +49,14 @@ Artist.beforeCreate((user, options) => {
   user.password = bcrypt.hashSync(user.password, salt);
 
 });
+
+// Funtion to encrypt a password
+Artist.beforeUpdate((user, options) => {
+  const salt = bcrypt.genSaltSync();
+  user.password = bcrypt.hashSync(user.password, salt);
+
+});
+
 
 // Validation of a password
 Artist.prototype.validPassword = function(password){
