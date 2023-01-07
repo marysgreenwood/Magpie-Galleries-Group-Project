@@ -1,13 +1,14 @@
 const router = require('express').Router();
-const { User, Art } = require('../../models');
+const { Users, Art } = require('../../models');
 const upload = require("../../utils/upload");
 const path = require('path');
 
 //get route to search for work by artist
 
+
 router.get ('/:username', async (req, res) =>{
     try {
-        const searchByUser= await User.findAll({
+        const searchByUser= await Users.findAll({
             where: {
                 username: req.params.username
             }
@@ -47,7 +48,9 @@ router.get ('/:keyword', async (res, req) => {
 router.post ('/upload', upload.single("file"), async (req, res) => {
     try{
         const newArt= req.body;
+        console.log(req.file);
         newArt.image= req.file;
+        newArt.artist_key= req.session.user_id;
         const artUpload = await Art.create (newArt);
         res.status(200).json(artUpload);
     } catch(err){
@@ -88,3 +91,5 @@ router.delete (':id', async (req, res) => {
         res.status(400).json(err);
     }
 });
+
+module.exports= router;

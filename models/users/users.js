@@ -12,7 +12,7 @@ Users.init(
             primaryKey: true,
             autoIncrement: true
   },
-        prounouns: {
+        pronouns: {
             type: DataTypes.STRING
 },
         username: {
