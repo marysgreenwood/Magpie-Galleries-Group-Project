@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { Userss, Art } = require('../../models');
+const { Users, Art } = require('../../models');
 
 //for route testing purposes only
 router.get('/all', async (req, res) => {
