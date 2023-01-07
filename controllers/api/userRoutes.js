@@ -97,15 +97,18 @@ router.get('/edit-profile', (req, res) => {
 router.post('/edit-profile', (req, res) => {
     var email =  req.session.user.email;
     var username = req.body.username;
-    var oldPassword = req.body.oldPassword;
+    var validPassword = await userData.checkPassword(req.body.oldPassword);
     var firstPW = req.body.firstPassword;
     var secondPW = req.body.secondPassword;
     User.findOne({ where: { email: email } }).then(function (user) {
     if (!firstPW == secondPW) {
         res.redirect('/edit-profile');
     }
-    else if (!user.validPassword(oldPassword)) {
-        res.redirect('/edit-profile');
+    else if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
     }
     else{
         user.update(
