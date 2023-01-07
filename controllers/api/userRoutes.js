@@ -89,7 +89,43 @@ router.get('/dashboard', (req, res) => {
   }
 });
 
-
+// Routes for user editing profile
+router.get('/edit-profile', (req, res) => {
+        //res.sendFile(__dirname + '/public/signup.html');
+        res.render('edit-profile', hbsContent);
+    })
+router.post('/edit-profile', (req, res) => {
+    var email =  req.session.user.email;
+    var username = req.body.username;
+    var oldPassword = req.body.oldPassword;
+    var firstPW = req.body.firstPassword;
+    var secondPW = req.body.secondPassword;
+    User.findOne({ where: { email: email } }).then(function (user) {
+    if (!firstPW == secondPW) {
+        res.redirect('/edit-profile');
+    }
+    else if (!user.validPassword(oldPassword)) {
+        res.redirect('/edit-profile');
+    }
+    else{
+        user.update(
+            {
+                username: username,
+                password: firstPW,
+              },
+              {
+                where: {
+                  email: email,
+                },
+              }
+            )
+              .then(() => {
+                res.redirect('/dashboard')
+              })
+              .catch((err) => res.json(err));
+          }
+    })
+        });   
 
 
 module.exports = router;
