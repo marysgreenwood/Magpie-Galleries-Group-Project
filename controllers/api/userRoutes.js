@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const { Users, Art } = require('../../models');
+const { Userss, Art } = require('../../models');
 
 //for route testing purposes only
 router.get('/all', async (req, res) => {
@@ -11,7 +11,14 @@ router.get('/all', async (req, res) => {
     res.status(400).json(err);
   }
 })
-
+router.get('/all', async (req, res) => {
+  try {
+    var userList = await Users.findAll();
+    res.status(200).json(userList);
+  } catch(err) {
+    res.status(400).json(err);
+  }
+})
 //route for user signup
 router.post('/newUser', async (req, res) => {
     try {

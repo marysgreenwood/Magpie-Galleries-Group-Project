@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Users, Art } = require('../../models');
+const { Userss, Art } = require('../../models');
 const upload = require("../../utils/upload");
 const path = require('path');
 const path = require('path');
@@ -7,9 +7,10 @@ const path = require('path');
 //get route to search for work by artist
 
 
+
 router.get ('/:username', async (req, res) =>{
     try {
-        const searchByUser= await Users.findAll({
+        const searchByUser= await Userss.findAll({
             where: {
                 username: req.params.username
             }
@@ -55,7 +56,9 @@ router.post ('/upload', upload.single("file"), async (req, res) => {
     try{
         const newArt= req.body;
         console.log(req.file);
+        console.log(req.file);
         newArt.image= req.file;
+        newArt.artist_key= req.session.user_id;
         //newArt.artist_key= req.session.user_id;
         const artUpload = await Art.create (newArt);
         res.status(200).json(artUpload);
