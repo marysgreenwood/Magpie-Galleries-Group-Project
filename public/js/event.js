@@ -40,9 +40,7 @@ const editBio = document.querySelector('#insertID');
 //when user clicks edit bio they should be able to change their bio
 
 // example function 
-/*function writePassword() {
+/*function functionName() {
   
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
+  querySelectorVariable.value = userInputVariable;
 } */
