@@ -101,7 +101,7 @@ router.get('/edit-profile', (req, res) => {
         //res.sendFile(__dirname + '/public/signup.html');
         res.render('edit-profile', hbsContent);
     })
-router.post('/edit-profile', (req, res) => {
+router.post('/edit-profile', async (req, res) => {
     var email =  req.session.user.email;
     var username = req.body.username;
     var validPassword = await userData.checkPassword(req.body.oldPassword);
