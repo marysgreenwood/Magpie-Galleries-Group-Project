@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Users, Art } = require('../../models');
+const { User, Art } = require('../../models');
 const upload = require("../../utils/upload");
 const path = require('path');
 
