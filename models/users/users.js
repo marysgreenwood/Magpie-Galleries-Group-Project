@@ -41,5 +41,31 @@ Users.init(
 }
 );
 
+// Funtion to encrypt a password
+Artist.beforeCreate((user, options) => {
+  const salt = bcrypt.genSaltSync();
+  user.password = bcrypt.hashSync(user.password, salt);
+
+});
+
+// Funtion to encrypt a password
+Artist.beforeUpdate((user, options) => {
+  const salt = bcrypt.genSaltSync();
+  user.password = bcrypt.hashSync(user.password, salt);
+
+});
+
+
+// Validation of a password
+Artist.prototype.validPassword = function(password){
+  return bcrypt.compareSync(password, this.password)
+}
+
+// Create all the tables in the specified DB
+sequelize.sync()
+  .then(() => console.log("Artist tables have been successfully created if one does not exist"))
+  .catch(error => console.log("This error occured", error))
+
+
 module.exports = Users;
 
