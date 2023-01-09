@@ -1,14 +1,26 @@
 //querySelector for different elements. Need to go back and insert element id where appropriate, and maybe move to function scope to limit globally declared variables
 const loginSelect = document.querySelector('#insertID');
-const addSelect = document.querySelector('#insertID');
+const addSelect = document.querySelector('#addBtn');
 const searchGo = document.querySelector('#insertID');
-const searchInput = document.querySelector('#insertID');
+const searchInput = document.querySelector('#userSearchInput');
 const saveSelect = document.querySelector('#insertID');
+const logIn = document.querySelector('#login');
 const logOut = document.querySelector('#insertID');
 const editPic = document.querySelector('#insertID');
 const editName = document.querySelector('#insertID');
 const editPronouns = document.querySelector('#insertID');
 const editBio = document.querySelector('#insertID');
+
+//signup IDs
+const emailInput = document.quertySelector('#eamil-input');
+const nameInput = document.querySelector('#username-input');
+const pwInput = document.querySelector('#password-input');
+//need on for submit btn file signuphbs
+
+//submit button code
+function submitForm (func) {
+    func.submit();
+}
 
 //generic click EventLister
 /*element selector variable*/.addEventListener('click', /*function to perform*/);

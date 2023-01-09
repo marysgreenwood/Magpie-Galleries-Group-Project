@@ -4,19 +4,34 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Main Landing</title>
+        <title>Search</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
         <link href="/public/css/style.css" type="text/css" rel="stylesheet">
-        <script src="/public/js/hblanding.js"></script>
-        <script id="landingTemp" type="text/x-handlebars-template">
+        <script src="/public/js/hbsearch.js"></script>
+        <script id="searchTemp" type="text/x-handlebars-template">
     </head>
-    <header>
-        <button></button>
-        <button></button>
-        <button></button>
-        <img src="" alt="">
-    </header>
     <body>
+                <!-- website title and large image on landing page -->
+        <div class="splash">
+            <h1>MAGPIE GALLERY</h1>
+            <h2>Search for hidden gems</h2>
+        </div>
+        <nav>
+            <ul>
+                <!-- new post button -->
+                <li class="Add"></li>
+                <!-- search button -->
+                <li type="submit" id="searchBtn"></li>
+                <!-- search form -->
+                <li id="userSearchForm">
+                    <form>
+                        <input class="col-6 " id="userSearchInput" type="text">    
+                    </form>
+                </li>
+                <!-- login button -->
+                <li class="Login">Sign In</li>
+            </ul>
+        </nav>
         <p>Results for "{{searched}}"</p>
         {{#each insertArray}}
         <div class="card">
