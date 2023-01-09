@@ -1,8 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../../config/connection');
+const bcrypt = require('bcrypt');
 //const sequelize = require(/*insert location of env js path*/);
 
-class Users extends Model {}
+class Users extends Model {
+    checkPassword(loginPw) {
+        return bcrypt.compareSync(loginPw, this.password);
+      }
+}
 
 Users.init(
 //columns Username, Passwordhash, id(primarykey)
@@ -12,7 +17,7 @@ Users.init(
             primaryKey: true,
             autoIncrement: true
   },
-        prounouns: {
+        pronouns: {
             type: DataTypes.STRING
 },
         username: {
@@ -27,13 +32,32 @@ Users.init(
                 }
             }*/
 },
-        passwordhash: {
+        password: {
             type: DataTypes.STRING
 },
 },
 //link to database connection}
 
- { sequelize,
+ { 
+  hooks: {
+    // Funtion to encrypt a password
+    beforeCreate: async (newUserData) => {
+      const salt = bcrypt.genSaltSync();
+      newUserData.password = bcrypt.hashSync(newUserData.password, salt);
+      return newUserData
+    
+    },
+    
+    // Funtion to encrypt a password
+   beforeUpdate: (userData) => {
+      const salt = bcrypt.genSaltSync();
+      userData.password = bcrypt.hashSync(userData.password, salt);
+      return userData
+    },
+    
+  },
+
+  sequelize,
   timestamps: false,
   freezeTableName: true,
   underscored: true,
@@ -41,30 +65,10 @@ Users.init(
 }
 );
 
-// Funtion to encrypt a password
-Artist.beforeCreate((user, options) => {
-  const salt = bcrypt.genSaltSync();
-  user.password = bcrypt.hashSync(user.password, salt);
-
-});
-
-// Funtion to encrypt a password
-Artist.beforeUpdate((user, options) => {
-  const salt = bcrypt.genSaltSync();
-  user.password = bcrypt.hashSync(user.password, salt);
-
-});
 
 
-// Validation of a password
-Artist.prototype.validPassword = function(password){
-  return bcrypt.compareSync(password, this.password)
-}
 
-// Create all the tables in the specified DB
-sequelize.sync()
-  .then(() => console.log("Artist tables have been successfully created if one does not exist"))
-  .catch(error => console.log("This error occured", error))
+
 
 
 module.exports = Users;

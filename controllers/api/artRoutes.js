@@ -1,13 +1,17 @@
 const router = require('express').Router();
-const multer = require('multer');
-const { User, Art } = require('../../models');
+const { Users, Art } = require('../../models');
 const upload = require("../../utils/upload");
+const path = require('path');
+
 
 //get route to search for work by artist
 
+
+
+
 router.get ('/:username', async (req, res) =>{
     try {
-        const searchByUser= await User.findAll({
+        const searchByUser= await Users.findAll({
             where: {
                 username: req.params.username
             }
@@ -15,8 +19,11 @@ router.get ('/:username', async (req, res) =>{
         {
            include: [{model: Art}]
         });
-        res.status(200).json(searchByUser);
-        //how to display artwork
+        res.status(200).json(searchByUser)
+         //HOW TO DISPLAY ALL ART (FOR EACH?)
+       //res.sendFile(path.join(`${__dirname}/../views/index.html`));
+       console.log(searchByUser);
+       
     } catch(err){
         res.status(400).json(err);
     }
@@ -44,7 +51,9 @@ router.get ('/:keyword', async (res, req) => {
 router.post ('/upload', upload.single("file"), async (req, res) => {
     try{
         const newArt= req.body;
-        newArt.image= req.file;
+        console.log(req.file);
+        newArt.image= req.file.path;
+        newArt.artist_key= req.session.user_id;
         const artUpload = await Art.create (newArt);
         res.status(200).json(artUpload);
     } catch(err){
@@ -72,7 +81,7 @@ router.put('/:id', (req, res) => {
 });
 
 //delete route to remove work
-router.delete (':id', async (req, res) => {
+router.delete ('/:id', async (req, res) => {
     try {
         const deletedArt= await Art.destroy ({
             where: {
@@ -85,3 +94,5 @@ router.delete (':id', async (req, res) => {
         res.status(400).json(err);
     }
 });
+
+module.exports= router;
