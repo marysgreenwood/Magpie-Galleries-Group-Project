@@ -1,8 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../../config/connection');
+const bcrypt = require('bcrypt');
 //const sequelize = require(/*insert location of env js path*/);
 
-class Users extends Model {}
+class Users extends Model {
+    checkPassword(loginPw) {
+        return bcrypt.compareSync(loginPw, this.password);
+      }
+}
 
 Users.init(
 //columns Username, Passwordhash, id(primarykey)
@@ -27,7 +32,7 @@ Users.init(
                 }
             }*/
 },
-        passwordhash: {
+        password: {
             type: DataTypes.STRING
 },
 },
@@ -39,6 +44,7 @@ Users.init(
     beforeCreate: async (newUserData) => {
       const salt = bcrypt.genSaltSync();
       newUserData.password = bcrypt.hashSync(newUserData.password, salt);
+      return newUserData
     
     },
     
@@ -46,16 +52,10 @@ Users.init(
    beforeUpdate: (userData) => {
       const salt = bcrypt.genSaltSync();
       userData.password = bcrypt.hashSync(userData.password, salt);
-    
+      return userData
     },
     
-    
-    // Validation of a password
-    prototype.validPassword = function(password){
-      return bcrypt.compareSync(password, this.password)
-    } 
-
-  };
+  },
 
   sequelize,
   timestamps: false,

@@ -1,16 +1,7 @@
 const router = require('express').Router();
-const bcrypt = require('bcrypt');
 const { Users, Art } = require('../../models');
 
 //for route testing purposes only
-router.get('/all', async (req, res) => {
-  try {
-    var userList = await Users.findAll();
-    res.status(200).json(userList);
-  } catch(err) {
-    res.status(400).json(err);
-  }
-})
 router.get('/all', async (req, res) => {
   try {
     var userList = await Users.findAll();
@@ -23,8 +14,6 @@ router.get('/all', async (req, res) => {
 router.post('/newUser', async (req, res) => {
     try {
       const newUser = req.body;
-      // hash the password from 'req.body' and save to newUser
-      newUser.password = await bcrypt.hash(req.body.password, 10);
       // create the newUser with the hashed password and save to DB
       const userData = await Users.create(newUser);
       res.status(200).json(userData);
@@ -66,30 +55,21 @@ router.post('/login', async (req, res) => {
   }
 });
 
-//USER LOGOUTS--MAKE DECISIONS!
+// route for user logout
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
+    console.log(req.session.user_id)
     req.session.destroy(() => {
       res.status(204).end();
+      console.log("logout successful")
     });
   } else {
     res.status(404).end();
   }
 });
 
-// route for user logout
-router.get('/logout', (req, res) => {
-  if (req.session.user && req.cookies.user_sid) {
-  hbsContent.loggedin = false; 
-  hbsContent.title = "You are logged out!"; 
-      res.clearCookie('user_sid');
-  console.log(JSON.stringify(hbsContent)); 
-      res.redirect('/');
-  } else {
-      res.redirect('/login');
-  }
-});
-//END LOGOUT ROUTES
+
+
 
 // route for user's dashboard
 router.get('/dashboard', (req, res) => {
@@ -110,14 +90,26 @@ router.get('/dashboard', (req, res) => {
 router.get('/edit-profile', (req, res) => {
         //res.sendFile(__dirname + '/public/signup.html');
         res.render('edit-profile', hbsContent);
+    });
+
+router.put ('/edit-profile', async (req, res) => {
+  try {
+    const userData = await Users.update(req.body, {
+      where: {
+        id: req.session.user_id,
+      }
     })
-router.post('/edit-profile', async (req, res) => {
-    var email =  req.session.user.email;
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+/*router.post('/edit-profile', async (req, res) => {
     var username = req.body.username;
     var validPassword = await userData.checkPassword(req.body.oldPassword);
     var firstPW = req.body.firstPassword;
     var secondPW = req.body.secondPassword;
-    User.findOne({ where: { email: email } }).then(function (user) {
+    User.findOne({ where: { id:req.session.user_id } }).then(function (user) {
     if (!firstPW == secondPW) {
         res.redirect('/edit-profile');
     }
@@ -145,7 +137,7 @@ router.post('/edit-profile', async (req, res) => {
               .catch((err) => res.json(err));
           }
     })
-        });   
+        }); */ 
 
 
 module.exports = router;
