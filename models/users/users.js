@@ -33,7 +33,31 @@ Users.init(
 },
 //link to database connection}
 
- { sequelize,
+ { 
+  hooks: {
+    // Funtion to encrypt a password
+    beforeCreate: async (newUserData) => {
+      const salt = bcrypt.genSaltSync();
+      newUserData.password = bcrypt.hashSync(newUserData.password, salt);
+    
+    },
+    
+    // Funtion to encrypt a password
+   beforeUpdate: (userData) => {
+      const salt = bcrypt.genSaltSync();
+      userData.password = bcrypt.hashSync(userData.password, salt);
+    
+    },
+    
+    
+    // Validation of a password
+    prototype.validPassword = function(password){
+      return bcrypt.compareSync(password, this.password)
+    } 
+
+  };
+
+  sequelize,
   timestamps: false,
   freezeTableName: true,
   underscored: true,
@@ -41,30 +65,10 @@ Users.init(
 }
 );
 
-// Funtion to encrypt a password
-Artist.beforeCreate((user, options) => {
-  const salt = bcrypt.genSaltSync();
-  user.password = bcrypt.hashSync(user.password, salt);
-
-});
-
-// Funtion to encrypt a password
-Artist.beforeUpdate((user, options) => {
-  const salt = bcrypt.genSaltSync();
-  user.password = bcrypt.hashSync(user.password, salt);
-
-});
 
 
-// Validation of a password
-Artist.prototype.validPassword = function(password){
-  return bcrypt.compareSync(password, this.password)
-}
 
-// Create all the tables in the specified DB
-sequelize.sync()
-  .then(() => console.log("Artist tables have been successfully created if one does not exist"))
-  .catch(error => console.log("This error occured", error))
+
 
 
 module.exports = Users;

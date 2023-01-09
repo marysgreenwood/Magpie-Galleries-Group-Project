@@ -2,7 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { Users, Art } = require('../../models');
 
-//get route to find works by artist
+//for route testing purposes only
 router.get('/all', async (req, res) => {
   try {
     var userList = await Users.findAll();
@@ -11,6 +11,8 @@ router.get('/all', async (req, res) => {
     res.status(400).json(err);
   }
 })
+
+//route for user signup
 router.post('/newUser', async (req, res) => {
     try {
       const newUser = req.body;
@@ -24,6 +26,7 @@ router.post('/newUser', async (req, res) => {
     }
   });
 
+  //login route
 router.post('/login', async (req, res) => {
   try {
     const userData = await Users.findOne({ where: { username: req.body.username } });

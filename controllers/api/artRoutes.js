@@ -78,7 +78,7 @@ router.put('/:id', (req, res) => {
 });
 
 //delete route to remove work
-router.delete (':id', async (req, res) => {
+router.delete ('/:id', async (req, res) => {
     try {
         const deletedArt= await Art.destroy ({
             where: {
