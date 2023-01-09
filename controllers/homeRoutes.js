@@ -1,6 +1,18 @@
 const router = require('express').Router();
-const sessionChecker = require('../utils/help')
-//DEFINE hbsContent REQUIRE FILES?
+const path = require('path');
+
+// This is the 'get' route 
+/*router.get('/', async (req, res) => {
+
+  res.render('landing');
+});*/
+
+//const sessionChecker = require('../utils/help')
+
+
+
+
+/*//DEFINE hbsContent REQUIRE FILES?
 
 // route for Home-Page
 router.get('/', sessionChecker, (req, res) => {
@@ -17,5 +29,6 @@ router.get ('/signup', (req, res) => {
 router.use(function (req, res, next) {
     res.status(404).send("Sorry can't find that!")
   });
+  */
 
-  module.exports= router
+  module.exports= router;
