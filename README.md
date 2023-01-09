@@ -10,7 +10,6 @@ This art-sharing application allows artists to upload their work and allows art 
   - [Technology](#technology)
   - [Authors](#authors)
   - [License](#license)
-  </ul>
 
 ## Getting Started
 <a href="placeholder">Magpie Gallery</a>
@@ -34,7 +33,20 @@ To get started click the the link "Magpie Gallery" located in this section direc
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 
-We also utilized a new technology, for us, Multer. Multer is a npm package that makes it easy to upload files by handling multipart/form-data.
+We utilized the following node modules:
+<br></br>
+
+* body-parser
+* cookie-parser
+* morgan
+* hbs
+* bcrypt
+* dcrypt
+* dotenv
+* express-session
+* express-handlebars
+
+We also used a new technology, for us, Multer. Multer is a npm package that makes it easy to upload files by handling multipart/form-data.
 <br></br>
 
 ## Authors
