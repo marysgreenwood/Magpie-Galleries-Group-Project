@@ -7,7 +7,7 @@
         <title>Search</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
         <link href="/public/css/style.css" type="text/css" rel="stylesheet">
-        <script src="/public/js/hbsearch.js"></script>
+        <script src="/public/js/hblanding.js"></script>
         <script id="searchTemp" type="text/x-handlebars-template">
     </head>
     <body>
@@ -32,10 +32,45 @@
                 <li class="Login">Sign In</li>
             </ul>
         </nav>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="/public/js/hblanding.js"></script>
+        <script id="indexTemp" type="text/x-handlebars-template">
+        <title>MagpieGallery</title>
+    </head>
+    <div class="splash">
+        <h1>MAGPIE GALLERY</h1>
+        <h2>Search for hidden gems</h2>
+    </div>
+    <nav>
+        <!-- navbar -->
+    </nav>
+    <div>
+    {{#if searched}}    
         <p>Results for "{{searched}}"</p>
-        {{#each insertArray}}
+        {{#each Art}}
         <div class="card">
-            <img src="{{imagesrc}}" alt="{{description}}" style="whatever Lexi wants">
+            <img src="{{image}}" alt="{{description}}" style="whatever Lexi wants">
+            <div class="container">
+                <p>{{name}}</p>
+                <p>{{user}}</p>
+                <p>{{type}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </body>
+    {{else}}
+    <body>
+        <p>Random Art</p>
+        {{#each Art}}
+        <div class="card">
+            <img src="{{imagesrc}}" alt="{{description}}" style="width:100%">
             <div class="container">
                 <p>{{title}}</p>
                 <p>{{user}}</p>
@@ -43,4 +78,7 @@
             </div>
         </div>
         {{/each}}
+        </div>
+    </body>
+    {{/if}}
     </body>
