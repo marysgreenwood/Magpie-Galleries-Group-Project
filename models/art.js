@@ -24,6 +24,10 @@ Art.init(
           description: {
             type: DataTypes.STRING,
           },
+          type: {
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
           date_added: {
             type: DataTypes.DATE,
             allowNull: false,

@@ -14,11 +14,13 @@ const editName = document.querySelector('#insertID');
 const editPronouns = document.querySelector('#insertID');
 const editBio = document.querySelector('#insertID');
 
+/* REDUNDANT WITH DIFFERENT FILE
 //login IDs
 const userLogin = document.quertySelector('#username-login');
 const pwLogin = document.querySelector('#password-login');
 const pwInput = document.querySelector('#password-input');
 //need one for submit btn file signuphbs, add id to loginhbs
+*/
 
 //signup IDs
 const emailInput = document.quertySelector('#eamil-input');
