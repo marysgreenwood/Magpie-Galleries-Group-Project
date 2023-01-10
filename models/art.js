@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
-//const { TABLOCK } = require('sequelize/types/table-hints');
+
 
 class Art extends Model {}
 
@@ -13,7 +13,7 @@ Art.init(
             primaryKey: true,
             autoIncrement: true,
           },
-          name: {
+          title: {
             type: DataTypes.STRING,
             allowNull: false,
           },
@@ -25,7 +25,7 @@ Art.init(
             type: DataTypes.STRING,
           },
           date_added: {
-            type: DataTypes.DATE,
+            type: DataTypes.STRING,
             allowNull: false,
           },
           artist_key: {
@@ -35,14 +35,15 @@ Art.init(
                 model: 'users',
                 key: 'id',
             }
-          }
-    },
-    {
+          },
+  
+      },
+      {
         sequelize,
         freezeTableName: true,
         underscored: true,
         modelName: 'art',
-      },
+        }
 )
 
 module.exports= Art;

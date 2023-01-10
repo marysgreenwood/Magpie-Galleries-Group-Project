@@ -10,12 +10,12 @@ const imageFilter = (req, file, cb) => {
 
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, __basedir + "/assets/uploads/");
+    cb(null,  "./assets/user-art/");
   },
   filename: (req, file, cb) => {
     cb(null, `${Date.now()}-magpie-${file.originalname}`);
   },
 });
 
-var uploadFile = multer({ storage: storage, fileFilter: imageFilter });
-module.exports = uploadFile;
+var upload = multer({ storage: storage, fileFilter: imageFilter });
+module.exports = upload;
