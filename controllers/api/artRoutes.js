@@ -8,10 +8,6 @@ const { MulterError } = require('multer');
 const fs = require ('fs');
 
 //get route to search for work by artist
-
-
-
-
 router.get ('/:username', async (req, res) =>{
     try {
         const searchByUser= await Users.findAll({
