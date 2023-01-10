@@ -1,0 +1,12 @@
+<div>
+     <p>Results for "{{searched}}"</p>
+    {{#each Art}}
+        <div class="card">
+            <img src="{{image}}" alt="{{description}}" style="whatever Lexi wants">
+            <div class="container">
+                <p>{{name}}</p>
+                <p>{{artist_key}}</p>
+                <p>{{type}}</p>
+            </div>
+        </div>
+{{/each}}
