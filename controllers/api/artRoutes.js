@@ -59,6 +59,7 @@ router.post ('/upload', upload.single("file"), async (req, res) => {
         const newArt= {};
         newArt.title= req.body.title;
         newArt.description=req.body.description;
+        newArt.type=req.body.type;
         newArt.image= req.file.path;
         console.log(req.session);
         newArt.artist_key= req.session.user_id;
