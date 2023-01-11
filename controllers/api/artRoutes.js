@@ -2,21 +2,20 @@ const router = require('express').Router();
 const { Users, Art } = require('../../models');
 const upload = require("../../utils/upload");
 const path = require('path');
-
+const multer = require ('multer');
+const { DATE } = require('sequelize');
+const { MulterError } = require('multer');
+const fs = require ('fs');
 
 //get route to search for work by artist
-
-
-
-
 router.get ('/:username', async (req, res) =>{
     try {
         const searchByUser= await Users.findAll({
             where: {
                 username: req.params.username
-            }
-        }, 
-        {
+            },
+        
+    
            include: [{model: Art}]
         });
         res.status(200).json(searchByUser)
@@ -50,34 +49,49 @@ router.get ('/:keyword', async (res, req) => {
 //add withauth helper, figure out how to access userID for Art.Create
 router.post ('/upload', upload.single("file"), async (req, res) => {
     try{
-        const newArt= req.body;
-        console.log(req.file);
+        console.log (req.body);
+        console.log (req.file.path);
+        const timestamp = new DATE;
+        const newArt= {};
+        newArt.title= req.body.title;
+        newArt.description=req.body.description;
+        newArt.type=req.body.type;
         newArt.image= req.file.path;
+        console.log(req.session);
         newArt.artist_key= req.session.user_id;
+        newArt.date_added= timestamp.toString();
         const artUpload = await Art.create (newArt);
         res.status(200).json(artUpload);
     } catch(err){
+        if (err instanceof multer.MulterError) {
+            res.json(MulterError);
+            console.log(MulterError)
+            // A Multer error occurred when uploading.
+          } else if (err) {
         res.status(400).json(err);
+        console.log (err);
+          }
     }
 });
 
 //put route to update title and description fields
-router.put('/:id', (req, res) => {
-  Art.update(
-    {
-      title: req.body.title,
-      description: req.body.description,
-    },
-    {
-      where: {
-        id: req.params.id,
-      },
-    }
-  )
-    .then((updatedArt) => {
-      res.json(updatedArt);
+router.put('/:id', async (req, res) => {
+    try {
+        var updatedArt= await Art.update(
+        req.body,
+         {
+            where: {
+              id: req.params.id,
+            },   
     })
-    .catch((err) => res.json(err));
+    res.status(200).json(updatedArt);
+} catch(err) {
+    res.status(400).json(err);
+}
+  
+
+     
+    
 });
 
 //delete route to remove work

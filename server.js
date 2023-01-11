@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 
 // Create the Handlebars.js engine object with custom helper functions
 //WHICH DO WE USE?
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({});
 //var hbs = exphbs.create({ /* config */ })
 
 const app = express();
@@ -53,6 +53,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-sequelize.sync({ force: true }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
 });

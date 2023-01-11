@@ -37,6 +37,11 @@ h2 {
     
 }
 
+h3 {
+    text-align:center;
+    color: var(--white);
+}
+
 /* big bird picture */
 .splash {
     background-image: url("../assets/magpiegallerysplash.png");
@@ -121,6 +126,10 @@ li {
     line-height: 25px;
 }
 
+a {
+    color: var(--white)
+}
+
 .showresult {
     text-align: center;
     font-family: Cabin;
@@ -155,4 +164,10 @@ li {
     background-color: var(--black);
     border: 0px;
     width: 25%;
+}
+
+.container.row {
+    justify-content:center;
+    margin-right:0px;
+    width: 200%;
 }
