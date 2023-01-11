@@ -3,7 +3,7 @@ const loginFromHandler = async (event) => {
     event.preventDefault();
 
     // Grab username and password from the form
-    const username = document.querySelector('#username-login').Value.trim();
+    const username = document.querySelector('#username-login').value.trim();
     const password = document.querySelector('#password-login').value.trim();
 
     if (username && password) {
@@ -16,6 +16,7 @@ const loginFromHandler = async (event) => {
         });
 
         if (response.ok) {
+            console.log(response);
             document.location.replace('/');
         } else {
             alert('Failed to log in');
@@ -23,4 +24,4 @@ const loginFromHandler = async (event) => {
     }
 };
 
-document.querySelector('login-form').addEventListener('submit', loginFromHandler);
+document.querySelector('#login-form').addEventListener('submit', loginFromHandler);

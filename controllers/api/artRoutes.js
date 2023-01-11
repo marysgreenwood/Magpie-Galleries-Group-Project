@@ -49,8 +49,7 @@ router.get ('/:keyword', async (res, req) => {
 //add withauth helper, figure out how to access userID for Art.Create
 router.post ('/upload', upload.single("file"), async (req, res) => {
     try{
-        console.log (req.body);
-        console.log (req.file.path);
+        console.log(req.session)
         const timestamp = new DATE;
         const newArt= {};
         newArt.title= req.body.title;

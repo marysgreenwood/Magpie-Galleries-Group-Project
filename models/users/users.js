@@ -49,7 +49,7 @@ Users.init(
     },
     
     // Funtion to encrypt a password
-   beforeUpdate: (userData) => {
+   beforeUpdate: async (userData) => {
       const salt = bcrypt.genSaltSync();
       userData.password = bcrypt.hashSync(userData.password, salt);
       return userData
