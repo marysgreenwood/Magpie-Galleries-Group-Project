@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 
 // Create the Handlebars.js engine object with custom helper functions
 //WHICH DO WE USE?
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({});
 //var hbs = exphbs.create({ /* config */ })
 
 const app = express();

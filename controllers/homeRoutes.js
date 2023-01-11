@@ -1,34 +1,32 @@
 const router = require('express').Router();
 const path = require('path');
+const sessionChecker = require('../utils/help')
 
-// This is the 'get' route 
-/*router.get('/', async (req, res) => {
+// Loads homepage
+router.get('/', async (req, res) => {
 
   res.render('landing');
-});*/
-
-//const sessionChecker = require('../utils/help')
-
-
-
-
-/*//DEFINE hbsContent REQUIRE FILES?
-
-// route for Home-Page
-router.get('/', sessionChecker, (req, res) => {
-    res.redirect('/login');
 });
 
-// route for user signup page
+// load user signup page
 router.get ('/signup', (req, res) => {
-        //res.sendFile(__dirname + '/public/signup.html');
-        res.render('signup', hbsContent);
+        res.render('signup');
     })
+
+//load login page
+router.get ('/login', (req, res) => {
+  res.render('login');
+})
+
+//load search results
+router.get ('/search', (req, res) => {
+  res.render('search');
+})
 
 // route for handling 404 requests(unavailable routes)
 router.use(function (req, res, next) {
     res.status(404).send("Sorry can't find that!")
   });
-  */
+  
 
   module.exports= router;
