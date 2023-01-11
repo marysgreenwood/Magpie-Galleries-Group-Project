@@ -27,7 +27,7 @@ router.post('/newUser', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const userData = await Users.findOne({ where: { username: req.body.username } });
-
+    console.log (userData)
     if (!userData) {
       res
         .status(400)
@@ -40,15 +40,16 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+        .json({ message: 'Incorrect username or password, please try again' });
       return;
     }
-    console.log(userData);
+    
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
       
       res.json({ user: userData, message: 'You are now logged in!' });
+      console.log (req.session)
     });
 
   } catch (err) {
@@ -76,25 +77,25 @@ router.get('/dashboard', sessionChecker, (req, res) => {
 })
 
 
-// Routes for user editing profile
-router.get('/edit-profile', sessionChecker, (req, res) => {
-        res.render('edit-profile');
-    });
-
-router.put ('/:id', sessionChecker, async (req, res) => {
+// Route for user editing profile
+router.put ('/edit', async (req, res) => {
+  console.log(req.body);
   try {
     
-    var userUpdate = {};
-    userUpdate.username= req.body.username;
-    userUpdate.password=req.body.password;
-    console.log(req.body);
-    const userData = await Users.update( userUpdate,
+    var userData = {};
+    userData.username = req.body.username;
+    if (req.body.firstPassword == req.body.secondPassword){
+      userData.password= firstPassword
+    }else {
+      res.redirect('/edit')
+    }
+    const userUpdate = await Users.update( userData,
       {
       where: {
-        id: req.params.id,
+        id: req.session.user_id,
       }
     })
-    res.status(200).json(userData);
+    res.status(200).json(userUpdate);
   } catch (err) {
     res.status(400).json(err);
     console.log (err);
