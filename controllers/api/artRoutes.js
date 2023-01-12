@@ -60,6 +60,7 @@ router.post ('/upload', upload.single("file"), async (req, res) => {
         newArt.date_added= timestamp.toString();
         const artUpload = await Art.create (newArt);
         res.status(200).json(artUpload);
+        res.redirect('/');
     } catch(err){
         if (err instanceof multer.MulterError) {
             res.json(MulterError);
