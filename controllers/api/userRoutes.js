@@ -69,8 +69,6 @@ router.post('/logout', (req, res) => {
   }
 });
 
-
-
 // Route for user editing profile
 router.post ('/edit-profile', async (req, res) => {
   console.log(req.body);
@@ -89,40 +87,5 @@ router.post ('/edit-profile', async (req, res) => {
     console.log (err);
   }
 })
-/*router.post('/edit-profile', async (req, res) => {
-    var username = req.body.username;
-    var validPassword = await userData.checkPassword(req.body.oldPassword);
-    var firstPW = req.body.firstPassword;
-    var secondPW = req.body.secondPassword;
-    User.findOne({ where: { id:req.session.user_id } }).then(function (user) {
-    if (!firstPW == secondPW) {
-        res.redirect('/edit-profile');
-    }
-    else if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
-      return;
-    }
-    else{
-        user.update(
-            {
-                username: username,
-                password: firstPW,
-              },
-              {
-                where: {
-                  email: email,
-                },
-              }
-            )
-              .then(() => {
-                res.redirect('/dashboard')
-              })
-              .catch((err) => res.json(err));
-          }
-    })
-        }); */ 
-
 
 module.exports = router;
