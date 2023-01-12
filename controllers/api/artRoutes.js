@@ -21,7 +21,6 @@ router.get ('/:username', async (req, res) =>{
         res.status(200).json(searchByUser)
          //HOW TO DISPLAY ALL ART (FOR EACH?)
        //res.sendFile(path.join(`${__dirname}/../views/index.html`));
-       console.log(searchByUser);
        
     } catch(err){
         res.status(400).json(err);
@@ -59,8 +58,8 @@ router.post ('/upload', upload.single("file"), async (req, res) => {
         newArt.artist_key= req.session.user_id;
         newArt.date_added= timestamp.toString();
         const artUpload = await Art.create (newArt);
-        res.status(200).json(artUpload);
-        res.redirect('/');
+        
+        res.render ('dashboard');
     } catch(err){
         if (err instanceof multer.MulterError) {
             res.json(MulterError);
