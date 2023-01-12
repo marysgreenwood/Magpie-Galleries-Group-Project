@@ -22,9 +22,16 @@ router.get ('/login', (req, res) => {
 router.get ('/search', (req, res) => {
   res.render('search');
 })
+
+//load upload page
 router.get ('/upload', (req, res) => {
   res.render('upload');
 })
+
+//edit-profile page
+router.get('/edit-profile', sessionChecker, (req, res) => {
+        res.render('edit-profile');
+    });
 
 // route for handling 404 requests(unavailable routes)
 router.use(function (req, res, next) {
