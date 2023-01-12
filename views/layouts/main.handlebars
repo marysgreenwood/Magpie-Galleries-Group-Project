@@ -17,7 +17,7 @@
     <nav>
         <ul>
             <!-- new post button -->
-            <li class="Add"></li>
+            <li class="Add"><a href="upload.handlebars"></a></li>
             <!-- search button -->
             <li type="submit" id="searchBtn"></li>
             <!-- search form -->
@@ -27,11 +27,11 @@
                 </form>
             </li>
             <!-- login button -->
-            <li class="Logout"><div style="display:none;" id="logout"></div><a href="landing.handlebars">Sign In</a></div></li>
-            <li class="Login"><div style="display:none;" id="login"></div><a href="login.handlebars">Sign In</a></div></li>
+            <li class="Logout"><div style="display:none;" id="logout"></div><a href="/logout">Log Out</a></li>
+            <li class="Login"><div style="display:none;" id="login"></div><a href="login.handlebars">Sign In</a></li>
         </ul>
     </nav>
-    <nav class="navbar navbar-default">
+    {{!-- <nav class="navbar navbar-default">
         <div class="container-fluid">
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -52,7 +52,7 @@
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
-    </nav>
+    </nav> --}}
 
     {{{body}}}
     </body>
