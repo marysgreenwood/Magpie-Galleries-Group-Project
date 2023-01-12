@@ -27,7 +27,6 @@ router.post('/newUser', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const userData = await Users.findOne({ where: { username: req.body.username } });
-    console.log (userData)
     if (!userData) {
       res
         .status(400)
@@ -71,31 +70,20 @@ router.post('/logout', (req, res) => {
 });
 
 
-// route for user's dashboard
-router.get('/dashboard', sessionChecker, (req, res) => { 
-  res.render ('index')
-})
-
 
 // Route for user editing profile
-router.put ('/edit', async (req, res) => {
+router.post ('/edit-profile', async (req, res) => {
   console.log(req.body);
   try {
-    
-    var userData = {};
-    userData.username = req.body.username;
-    if (req.body.firstPassword == req.body.secondPassword){
-      userData.password= firstPassword
-    }else {
-      res.redirect('/edit')
-    }
-    const userUpdate = await Users.update( userData,
+    const userUpdate = await Users.update( req.body,
       {
       where: {
         id: req.session.user_id,
-      }
+      },
+      individualHooks: true,
     })
-    res.status(200).json(userUpdate);
+    console.log (userUpdate);
+    res.redirect ('/dashboard')
   } catch (err) {
     res.status(400).json(err);
     console.log (err);
