@@ -11,17 +11,22 @@ router.get('/', async (req, res) => {
 // load user signup page
 router.get ('/signup', (req, res) => {
         res.render('signup');
-    })
+    });
 
 //load login page
 router.get ('/login', (req, res) => {
   res.render('login');
-})
+});
 
 //load search results
 router.get ('/search', (req, res) => {
   res.render('search');
-})
+});
+
+//load dashboard
+router.get ('/dashboard', sessionChecker, (req, res) => {
+  res.render('dashboard')
+});
 
 //load upload page
 router.get ('/upload', (req, res) => {
