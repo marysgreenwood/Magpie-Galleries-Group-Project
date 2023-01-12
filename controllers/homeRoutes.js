@@ -22,6 +22,9 @@ router.get ('/login', (req, res) => {
 router.get ('/search', (req, res) => {
   res.render('search');
 })
+router.get ('/upload', (req, res) => {
+  res.render('upload');
+})
 
 // route for handling 404 requests(unavailable routes)
 router.use(function (req, res, next) {

@@ -81,22 +81,22 @@ router.get('/edit-profile', sessionChecker, (req, res) => {
         res.render('edit-profile');
     });
 
-router.put ('/edit-profile', sessionChecker, async (req, res) => {
+router.put ('/:id', sessionChecker, async (req, res) => {
   try {
-    console.log(req.body);
+    
     var userUpdate = {};
     userUpdate.username= req.body.username;
-    if (req.body.firstPassword == req.body.secondPassword){
-      userUpdate.password = req.body.firstPassword
-    };
-    const userData = await Users.update(userUpdate, {
+    userUpdate.password=req.body.password;
+    console.log(req.body);
+    const userData = await Users.update( userUpdate,
+      {
       where: {
-        id: req.session.user_id,
+        id: req.params.id,
       }
     })
     res.status(200).json(userData);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err);
     console.log (err);
   }
 })
