@@ -3,7 +3,8 @@ const signUpFormHandler = async (event) => {
   
     const username = document.querySelector('#username-input').value.trim();
     const password = document.querySelector('#password-input').value.trim();
-    const email = document.querySelector('#email-input')
+    const email = document.querySelector('#email-input').value.trim();
+    
     if (username && password) {
   
       const response = await fetch('/api/users', {
