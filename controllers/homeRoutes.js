@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const path = require('path');
 const sessionChecker = require('../utils/help')
+const { Users, Art } = require('../models');
 
 // Loads homepage
 router.get('/', async (req, res) => {
@@ -29,9 +30,24 @@ router.get ('/search', (req, res) => {
 });
 
 //load dashboard
-router.get ('/dashboard', sessionChecker, (req, res) => {
-  res.render('dashboard')
-});
+router.get ('/dashboard', sessionChecker, async (req, res) => {try {
+  const userArt= await Art.findAll({
+      where: {
+          artist_key: req.session.user_id,
+      },
+  });
+  res.render('dashboard', {
+    userArt
+  })
+  //res.status(200).json(searchByUser)
+   //HOW TO DISPLAY ALL ART (FOR EACH?)
+ //res.sendFile(path.join(`${__dirname}/../views/index.html`));
+ 
+} catch(err){
+  res.status(400).json(err);
+}
+
+})
 
 //load upload page
 router.get ('/upload', sessionChecker, (req, res) => {

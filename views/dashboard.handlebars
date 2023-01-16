@@ -2,6 +2,7 @@
 <div class="container row">
     <h1>Hello, Welcome to your Dashboard</h1>
 </div>
+<div class="container row">
 <div class="card">
     <div class="container">
         <a href="/upload">Add Art</a>
@@ -11,4 +12,17 @@
     <div class="container">
         <a href="/edit-profile">Edit Profile</a>
     </div>
+</div>
+</div>
+<div class="container row">
+    {{#each currentUser.Art}}
+        <div class="card">
+            <img src="{{image}}" alt="{{description}}">
+            <div class="container">
+                <p>{{title}}</p>
+                <p>{{artist_key}}</p>
+                <p>{{type}}</p>
+            </div>
+        </div>
+    {{/each}}
 </div>
