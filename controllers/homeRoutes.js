@@ -5,7 +5,10 @@ const sessionChecker = require('../utils/help')
 // Loads homepage
 router.get('/', async (req, res) => {
 
-  res.render('landing');
+  res.render(
+    'landing',
+    {logged_in: req.session.logged_in,}
+    );
 });
 
 // load user signup page

@@ -9,10 +9,6 @@ var cookieParser = require('cookie-parser');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 
-// Create the Handlebars.js engine object with custom helper functions
-//WHICH DO WE USE?
-const hbs = exphbs.create({});
-//var hbs = exphbs.create({ /* config */ })
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -31,6 +27,8 @@ app.use(session({
       expires: 600000
   }
 }));
+
+const hbs = exphbs.create({});
 
 // Inform Express.js which template engine we're using
 app.engine('handlebars', hbs.engine);
