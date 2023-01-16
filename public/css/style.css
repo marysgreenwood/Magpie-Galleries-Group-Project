@@ -50,8 +50,8 @@ h3 {
     background-repeat: no-repeat;
     height:300px;
     position: relative;
-    top:60px;
-    margin-bottom: 100px;
+    top:50px;
+    margin-bottom: 140px;
 }
 
 body {
@@ -101,12 +101,13 @@ li {
     
 }
 #userSearchInput {
+    color:#1E1E1E;
     width: 200px;
     height: 60px;
     max-width: 100%;
 }
 
-#searchBtn {
+.searchBtn {
     background-image: url("../assets/searchicon.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -163,6 +164,7 @@ a {
 
 .card {
     background-color: var(--black);
+    color:#EAEBF1;
     border: 0px;
     width: 25%;
 }
@@ -170,5 +172,5 @@ a {
 .container.row {
     justify-content:center;
     margin-right:0px;
-    width: 200%;
+    width: 100%;
 }

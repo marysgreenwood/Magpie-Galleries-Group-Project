@@ -23,7 +23,9 @@ router.get ('/login', (req, res) => {
 
 //load search results
 router.get ('/search', (req, res) => {
-  res.render('search');
+  res.render(
+    'search',
+    {searchbyUser});
 });
 
 //load dashboard
@@ -32,7 +34,7 @@ router.get ('/dashboard', sessionChecker, (req, res) => {
 });
 
 //load upload page
-router.get ('/upload', (req, res) => {
+router.get ('/upload', sessionChecker, (req, res) => {
   res.render('upload');
 })
 
