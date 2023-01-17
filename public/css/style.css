@@ -15,7 +15,7 @@
 h1 {
     text-align: center;
     color: white;
-    font-size: 100px;
+    font-size: 70px;
     font-family: rotulona-hand;
     position: inherit;
     top: 20px;
@@ -48,10 +48,9 @@ h3 {
     background-position: center;
     background-size:cover;
     background-repeat: no-repeat;
-    height:300px;
+    height:250px;
     position: relative;
-    top:50px;
-    margin-bottom: 140px;
+    margin-bottom: 100px;
 }
 
 body {
@@ -67,6 +66,7 @@ nav {
     width: 100%;
     padding: 10px;
 }
+
 
 /* for some reason I was getting random padding and margin
 on the ul so I had to specify a lack of said properties here */
@@ -157,7 +157,9 @@ a {
     margin-top: 20px;
 
 }
-
+.userart {
+    max-height: 500px;
+}
 .container {
     margin-top: 50px;
 }

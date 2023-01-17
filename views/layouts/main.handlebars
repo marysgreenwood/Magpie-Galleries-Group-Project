@@ -13,6 +13,8 @@
             <h1>Magpie Gallery</h1>
             <h2>Searching for hidden gems</h2>
         </div>
+
+    <div id="nav-container">
     <nav>
         <ul>
             <!-- new post button -->
@@ -27,13 +29,15 @@
             </li>
             <!-- login button -->
             {{#if logged_in}} 
-            <li>{{!--<div style="display:none;" id="logout"></div>--}}<button id="logout">Log Out</button></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li id="logout">{{!--<div style="display:none;" id="logout"></div>--}}Log Out</li>
             
             {{else}}
             <li>{{!--<div style="display:none;" id="login"></div>--}}<a href="/login">Sign In</a></li>
             {{/if}}
         </ul>
     </nav>
+    </div>
 
     {{{body}}}
     </body>

@@ -31,11 +31,14 @@ router.get ('/search', (req, res) => {
 
 //load dashboard
 router.get ('/dashboard', sessionChecker, async (req, res) => {try {
-  const userArt= await Art.findAll({
+  const dbUserArt= await Art.findAll({
       where: {
           artist_key: req.session.user_id,
       },
   });
+  const userArt = dbUserArt.map((userArtwork) =>
+      userArtwork.get({ plain: true })
+    );
   res.render('dashboard', {
     userArt
   })

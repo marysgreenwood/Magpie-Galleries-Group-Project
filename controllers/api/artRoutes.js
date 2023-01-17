@@ -54,11 +54,11 @@ router.post ('/upload', upload.single("file"), async (req, res) => {
         newArt.title= req.body.title;
         newArt.description=req.body.description;
         newArt.type=req.body.type;
-        newArt.image= req.file.path;
+        newArt.image=req.file.path.split('/').slice(1).join('/');
         newArt.artist_key= req.session.user_id;
         newArt.date_added= timestamp.toString();
         const artUpload = await Art.create (newArt);
-        
+        console.log (artUpload);
         res.render ('dashboard');
     } catch(err){
         if (err instanceof multer.MulterError) {
