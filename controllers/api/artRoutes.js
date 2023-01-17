@@ -49,14 +49,13 @@ router.get ('/:keyword', async (res, req) => {
 router.post ('/upload', upload.single("file"), async (req, res) => {
     try{
         console.log(req.session)
-        const timestamp = new DATE;
         const newArt= {};
         newArt.title= req.body.title;
         newArt.description=req.body.description;
         newArt.type=req.body.type;
         newArt.image=req.file.path.split('/').slice(1).join('/');
         newArt.artist_key= req.session.user_id;
-        newArt.date_added= timestamp.toString();
+        newArt.date_added= req.body.date;
         const artUpload = await Art.create (newArt);
         console.log (artUpload);
         res.render ('dashboard');
