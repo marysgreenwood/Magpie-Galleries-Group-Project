@@ -18,6 +18,7 @@ const loginFromHandler = async (event) => {
         if (response.ok) {
             console.log(response);
             document.location.replace('/');
+            console.log (session.logged_in);
         } else {
             alert('Failed to log in');
         }

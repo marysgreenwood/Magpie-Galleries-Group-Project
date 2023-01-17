@@ -5,6 +5,8 @@
 
 This art-sharing application allows artists to upload their work and allows art enthusiasts to view the work of contemporary artists.
 
+Demo: https://app.castify.com/view/54357c51-0887-4612-a306-ccbd7d3f3562
+
 ## Table of Contents
   - [Getting Started](#getting-started)
   - [Technology](#technology)

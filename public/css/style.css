@@ -15,7 +15,7 @@
 h1 {
     text-align: center;
     color: white;
-    font-size: 100px;
+    font-size: 70px;
     font-family: rotulona-hand;
     position: inherit;
     top: 20px;
@@ -48,9 +48,8 @@ h3 {
     background-position: center;
     background-size:cover;
     background-repeat: no-repeat;
-    height:360px;
+    height:250px;
     position: relative;
-    top:60px;
     margin-bottom: 100px;
 }
 
@@ -67,6 +66,7 @@ nav {
     width: 100%;
     padding: 10px;
 }
+
 
 /* for some reason I was getting random padding and margin
 on the ul so I had to specify a lack of said properties here */
@@ -101,12 +101,13 @@ li {
     
 }
 #userSearchInput {
+    color:#1E1E1E;
     width: 200px;
     height: 60px;
     max-width: 100%;
 }
 
-#searchBtn {
+.searchBtn {
     background-image: url("../assets/searchicon.png");
     background-position: center;
     background-repeat: no-repeat;
@@ -156,13 +157,16 @@ a {
     margin-top: 20px;
 
 }
-
+.userart {
+    max-height: 500px;
+}
 .container {
     margin-top: 50px;
 }
 
 .card {
     background-color: var(--black);
+    color:#EAEBF1;
     border: 0px;
     width: 25%;
 }
@@ -170,5 +174,5 @@ a {
 .container.row {
     justify-content:center;
     margin-right:0px;
-    width: 200%;
+    width: 100%;
 }

@@ -1,23 +1,19 @@
+<link rel="stylesheet" href="/css/style.css">
 <div class="container row">
-    <h1>Hello, Welcome to your Dashboard</h1>
+    <h1>Welcome to your Dashboard</h1>
 </div>
-<div class="card">
-    <div class="container">
-        <p>Add Art</p>
-    </div>
-</div>
-<div class="card">
-    <div class="container">
-        <p>Edit Profile</p>
-    </div>
-</div>
-<div class="card">
-    <div class="container">
-        <p>Add Art</p>
-    </div>
-</div>
-<div class="card">
-    <div class="container">
-        <p>Add Art</p>
-    </div>
+<ul >
+        <li><a href="/upload">Add Art</a></li>
+        <li><a href="/edit-profile">Edit Profile</a></li>
+</ul>
+<div class="container row">
+    {{#each userArt as |art|}}
+        <div class="card">
+            <img src="{{art.image}}" alt="{{art.description}}" class="userart">
+            <div class="container">
+                <p>Title: {{art.title}}</p>
+                <p>Type: {{art.type}}</p>
+            </div>
+        </div>
+    {{/each}}
 </div>

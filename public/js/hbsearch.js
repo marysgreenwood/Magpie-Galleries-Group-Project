@@ -1,4 +1,4 @@
-const source = document.getElementById('search').innerHTML;
+const source = document.getElementById('userSearchInput').innerHTML;
 const template = Handlebars.compile(source);
 const context = {
   //FIGURE OUT HOW SEARCH FUNCTION NEEDS TO WORK, WHAT ARE WE SEARCHING
