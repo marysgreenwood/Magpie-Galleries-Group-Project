@@ -19,14 +19,15 @@ router.get ('/signup', (req, res) => {
 
 //load login page
 router.get ('/login', (req, res) => {
-  res.render('login');
+  res.render('login',  {logged_in: req.session.logged_in,});
 });
 
 //load search results
 router.get ('/search', (req, res) => {
   res.render(
     'search',
-    {searchbyUser});
+    {searchbyUser},
+    {logged_in: req.session.logged_in,});
 });
 
 //load dashboard
@@ -39,9 +40,8 @@ router.get ('/dashboard', sessionChecker, async (req, res) => {try {
   const userArt = dbUserArt.map((userArtwork) =>
       userArtwork.get({ plain: true })
     );
-  res.render('dashboard', {
-    userArt
-  })
+  res.render('dashboard', 
+  {userArt, logged_in: req.session.logged_in})
   //res.status(200).json(searchByUser)
    //HOW TO DISPLAY ALL ART (FOR EACH?)
  //res.sendFile(path.join(`${__dirname}/../views/index.html`));
@@ -54,12 +54,14 @@ router.get ('/dashboard', sessionChecker, async (req, res) => {try {
 
 //load upload page
 router.get ('/upload', sessionChecker, (req, res) => {
-  res.render('upload');
+  res.render('upload',
+  {logged_in: req.session.logged_in,});
 })
 
 //edit-profile page
 router.get('/edit-profile', sessionChecker, (req, res) => {
-        res.render('edit-profile');
+        res.render('edit-profile',
+        {logged_in: req.session.logged_in,});
     });
 
 // route for handling 404 requests(unavailable routes)
