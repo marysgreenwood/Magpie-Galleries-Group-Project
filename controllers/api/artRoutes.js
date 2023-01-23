@@ -1,109 +1,113 @@
-const router = require('express').Router();
-const { Users, Art } = require('../../models');
+const router = require("express").Router();
+const { Users, Art } = require("../../models");
 const upload = require("../../utils/upload");
-const path = require('path');
-const multer = require ('multer');
-const { DATE } = require('sequelize');
-const { MulterError } = require('multer');
-const fs = require ('fs');
+const path = require("path");
+const multer = require("multer");
+const { MulterError } = require("multer");
+//const fs = require ('fs');
 
+//route to load all artwork
+
+router.get("/all", async (req, res) => {
+  try {
+    console.log("hello2");
+    const allArt = await Art.findAll();
+    res.status(200).json(allArt);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 //get route to search for work by artist
-router.get ('/:username', async (req, res) =>{
-    try {
-        const searchByUser= await Users.findAll({
-            where: {
-                username: req.params.username
-            },
-        
-    
-           include: [{model: Art}]
-        });
-        res.status(200).json(searchByUser)
-         //HOW TO DISPLAY ALL ART (FOR EACH?)
-       //res.sendFile(path.join(`${__dirname}/../views/index.html`));
-       
-    } catch(err){
-        res.status(400).json(err);
-    }
+router.get("username/:username", async (req, res) => {
+  try {
+    const searchByUser = await Users.findAll({
+      where: {
+        username: req.params.username,
+      },
 
-})
+      include: [{ model: Art }],
+    });
+    res.status(200).json(searchByUser);
+    //HOW TO DISPLAY ALL ART (FOR EACH?)
+    //res.sendFile(path.join(`${__dirname}/../views/index.html`));
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 //get route to search by keyword
-router.get ('/:keyword', async (res, req) => {
-    try {
-        const searchByKeyword = await Art.findAll({
-            where: {
-             description: {
-                [Op.substring]: req.params.keyword
-             }
-            }
-        });
-        res.status(200).json(searchByKeyword);
-    } catch (err) {
-        res.status(400).json(err);
-    }
+router.get("/test/:keyword", async (req, res) => {
+  try {
+    console.log("before line 41");
+    const searchByKeyword = await Art.findAll({
+      where: {
+        description: {
+          [Op.like]: req.params.keyword,
+        },
+      },
+    });
+    console.log("hello");
+    console.log(searchByKeyword);
+    res.status(200).json(searchByKeyword);
+  } catch (err) {
+    console.log("err", err);
+    res.status(400).json(err);
+  }
 });
 
 //post route to add new art
 //add withauth helper, figure out how to access userID for Art.Create
-router.post ('/upload', upload.single("file"), async (req, res) => {
-    try{
-        console.log(req.session)
-        const newArt= {};
-        newArt.title= req.body.title;
-        newArt.description=req.body.description;
-        newArt.type=req.body.type;
-        newArt.image=req.file.path.split('/').slice(1).join('/');
-        newArt.artist_key= req.session.user_id;
-        newArt.date_added= req.body.date;
-        const artUpload = await Art.create (newArt);
-        console.log (artUpload);
-        res.render ('dashboard');
-    } catch(err){
-        if (err instanceof multer.MulterError) {
-            res.json(MulterError);
-            console.log(MulterError)
-            // A Multer error occurred when uploading.
-          } else if (err) {
-        res.status(400).json(err);
-        console.log (err);
-          }
+router.post("/upload", upload.single("file"), async (req, res) => {
+  try {
+    console.log(req.session);
+    const newArt = {};
+    newArt.title = req.body.title;
+    newArt.description = req.body.description;
+    newArt.type = req.body.type;
+    newArt.image = req.file.path.split("/").slice(1).join("/");
+    newArt.artist_key = req.session.user_id;
+    newArt.date_added = req.body.date;
+    const artUpload = await Art.create(newArt);
+    console.log(artUpload);
+    res.render("dashboard");
+  } catch (err) {
+    if (err instanceof multer.MulterError) {
+      res.json(MulterError);
+      console.log(MulterError);
+      // A Multer error occurred when uploading.
+    } else if (err) {
+      res.status(400).json(err);
+      console.log(err);
     }
+  }
 });
 
 //put route to update title and description fields
-router.put('/:id', async (req, res) => {
-    try {
-        var updatedArt= await Art.update(
-        req.body,
-         {
-            where: {
-              id: req.params.id,
-            },   
-    })
+router.put("/:id", async (req, res) => {
+  try {
+    var updatedArt = await Art.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
     res.status(200).json(updatedArt);
-} catch(err) {
+  } catch (err) {
     res.status(400).json(err);
-}
-  
-
-     
-    
+  }
 });
 
 //delete route to remove work
-router.delete ('/:id', async (req, res) => {
-    try {
-        const deletedArt= await Art.destroy ({
-            where: {
-                id: req.params.id
-            }
-        });
-        res.status(200).json(deletedArt)
-
-    } catch(err){
-        res.status(400).json(err);
-    }
+router.delete("/:id", async (req, res) => {
+  try {
+    const deletedArt = await Art.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(deletedArt);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
-module.exports= router;
+module.exports = router;
