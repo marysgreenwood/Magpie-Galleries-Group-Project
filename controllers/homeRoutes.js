@@ -28,7 +28,7 @@ router.get("/dashboard", sessionChecker, async (req, res) => {
   try {
     const dbUserArt = await Art.findAll({
       where: {
-        artist_key: req.session.user_id,
+        artist: req.session.username,
       },
     });
     const userArt = dbUserArt.map((userArtwork) =>
