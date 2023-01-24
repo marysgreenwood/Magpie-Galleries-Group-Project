@@ -4,6 +4,7 @@ const upload = require("../../utils/upload");
 const path = require("path");
 const multer = require("multer");
 const { MulterError } = require("multer");
+const { Op } = require("sequelize");
 //const fs = require ('fs');
 
 //route to load all artwork
@@ -36,22 +37,22 @@ router.get("username/:username", async (req, res) => {
 });
 
 //get route to search by keyword
-router.get("/test/:keyword", async (req, res) => {
+router.get("/keyword/:keyword", async (req, res) => {
   try {
-    console.log("before line 41");
+    console.log(req.params.keyword);
     const searchByKeyword = await Art.findAll({
       where: {
         description: {
-          [Op.like]: req.params.keyword,
+          [Op.substring]: req.params.keyword,
         },
       },
     });
-    console.log("hello");
     console.log(searchByKeyword);
     res.status(200).json(searchByKeyword);
   } catch (err) {
-    console.log("err", err);
+    console.log("NOOOOOOOOOO", err);
     res.status(400).json(err);
+    //1/23 9pm, ReferenceError: Op is not defined at /Users/marygreenwood/Documents/bootcamp/Spaghetti-on-the-Wall-Project/controllers/api/artRoutes.js:45:12
   }
 });
 
