@@ -1,14 +1,13 @@
-const Users = require ('./users/users');
-const Art = require ('./art');
+const Users = require("./users/users");
+const Art = require("./art");
 
- Users.hasMany(Art, {
-  foreignKey: 'artist_key',
-  onDelete: 'CASCADE'
+Users.hasMany(Art, {
+  foreignKey: "artist",
+  onDelete: "CASCADE",
 });
 
 Art.belongsTo(Users, {
-  foreignKey: 'artist_key'
+  foreignKey: "artist",
 });
 
 module.exports = { Art, Users };
-
