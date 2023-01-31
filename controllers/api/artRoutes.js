@@ -21,7 +21,7 @@ router.get("/all", async (req, res) => {
 //search for art by user, title, type or keyword
 router.get("/search/:searchterm", async (req, res) => {
   try {
-    const searchResults = await Art.findAll({
+    const dbSearch = await Art.findAll({
       where: {
         [Op.or]: [
           { artist: { [Op.like]: req.params.searchterm } },
@@ -31,11 +31,12 @@ router.get("/search/:searchterm", async (req, res) => {
         ],
       },
     });
-    res.status(200).json(searchResults);
-    console.log(searchResults);
+    const searchResults = dbSearch.map((userArtwork) =>
+      userArtwork.get({ plain: true })
+    );
+    res.render("landing", { searchResults, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(400).json(err);
-    console.log("NOOOOOOOOOOOOOO", err);
   }
 });
 
