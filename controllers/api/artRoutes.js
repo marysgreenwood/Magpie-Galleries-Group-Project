@@ -31,10 +31,14 @@ router.get("/search/:searchterm", async (req, res) => {
         ],
       },
     });
+
     const searchResults = dbSearch.map((userArtwork) =>
       userArtwork.get({ plain: true })
     );
-    res.render("landing", { searchResults, logged_in: req.session.logged_in });
+    // res.status(200).json(searchResults);
+    // return searchResults;
+    console.log(searchResults);
+    res.render("landing", { searchResults });
   } catch (err) {
     res.status(400).json(err);
   }

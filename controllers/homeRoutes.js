@@ -36,7 +36,7 @@ router.get("/dashboard", sessionChecker, async (req, res) => {
     );
     console.log("user art", userArt);
 
-    res.render("dashboard", { userArt, logged_in: req.session.logged_in });
+    res.render("dashboard", { userArt }, { logged_in: req.session.logged_in });
     //res.status(200).json(searchByUser)
     //HOW TO DISPLAY ALL ART (FOR EACH?)
     //res.sendFile(path.join(`${__dirname}/../views/index.html`));

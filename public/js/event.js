@@ -34,10 +34,10 @@ function submitForm (func) {
 }
 
 //generic click EventLister
-/*element selector variable*/.addEventListener('click', /*function to perform*/);
+// /*element selector variable*/.addEventListener('click', /*function to perform*/);
 
 //generic mouseover EventLister, will probably use for searchInput
-/*element selector variable*/.addEventListener('mouseover', /*function to perform*/);
+// /*element selector variable*/.addEventListener('mouseover', /*function to perform*/);
 
 //Things to  do: find ID elements if already defined OR define ID elements in HTML/Handlebar elements if not already defined
 //THEN create/define functions to perform after each event

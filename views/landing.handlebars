@@ -4,6 +4,12 @@
             <h1>Magpie Gallery</h1>
             <h2>Searching for hidden gems</h2>
         </div>
+
+<div class="container row">
+    {{#each searchResults as |art|}}
+       {{> image}}
+    {{/each}}
+</div>
         
      <script src="/js/hblanding.js"></script>
   
