@@ -1,16 +1,37 @@
 <!-- website title and large image on landing page -->
-        <link href="/css/style.css" type="text/css" rel="stylesheet">
-        <div class="splash">
-            <h1>Magpie Gallery</h1>
-            <h2>Searching for hidden gems</h2>
-        </div>
-
-<div class="container row">
-    {{#each searchResults as |art|}}
-       {{> image}}
-    {{/each}}
+<link href="/css/style.css" type="text/css" rel="stylesheet" />
+<div class="splash">
+  <h1>Magpie Gallery</h1>
+  <h2>Searching for hidden gems</h2>
 </div>
-        
-     <script src="/js/hblanding.js"></script>
-  
+<ul>
+  <!-- search form -->
+  <li id="userSearchForm">
+    <input class="col-6" id="userSearchInput" type="text" name="searchterm" />
+  </li>
+  <!-- search button -->
+  <li
+    type="submit"
+    id="searchBtn"
+    class="searchBtn btn-primary"
+    value="search"
+  ></li>
+</ul>
 
+<div id="searchResultsDisplay" class="container row">
+  {{!-- {{#with searchResults }} --}}
+  {{#each searchResults as |art|}}
+    <div class="card col-md-4">
+      <img src="{{image}}" alt="{{description}}" class="userart" />
+      <div class="container">
+        <h4>Title: {{title}}</h4>
+        <h4>Description: {{description}} </h4>
+        <h4>Type: {{type}}</h4>
+      </div>
+    </div>
+  {{/each}}
+  {{!-- {{/with}} --}}
+</div>
+
+{{! <script src="/js/hblanding.js"></script> }}
+<script src="/js/hbsearch.js"> this.searchResults= {{{searchResults}}} </script>
