@@ -3,6 +3,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"
+    ></script>
     <title>Magpie Gallery</title>
     <link src="/css/style.css" type="text/css" rel="stylesheet" />
     <link
@@ -21,7 +24,6 @@
             <!-- new post button -->
             <a href="/upload"><li class="Add"></li></a>
 
-           
             <!-- login button -->
             {{#if logged_in}}
               <li><a href="/dashboard">Dashboard</a></li>
@@ -43,5 +45,5 @@
     {{{body}}}
   </body>
   <script src="/js/logout.js"></script>
- {{!-- <script src="/js/hbsearch.js"></script>   --}}
+  {{! <script src="/js/hbsearch.js"></script>   }}
 </html>
