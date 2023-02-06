@@ -15,11 +15,13 @@ router.get("/all", async (req, res) => {
 router.post("/newUser", async (req, res) => {
   try {
     const newUser = req.body;
+    console.log("newUser", newUser);
     // create the newUser with the hashed password and save to DB
     const userData = await Users.create(newUser);
     res.status(200).json(userData);
   } catch (err) {
     res.status(400).json(err);
+    console.log("NOOOOOOO", err);
   }
 });
 
