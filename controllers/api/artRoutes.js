@@ -63,7 +63,9 @@ router.post(
       newArt.date_added = req.body.date;
       const artUpload = await Art.create(newArt);
       console.log(artUpload);
-      res.render("dashboard");
+      // const userArt = artUpload.get({ plain: true });
+      // res.render("dashboard", { userArt, logged_in: req.session.logged_in });
+      res.redirect("/dashboard");
     } catch (err) {
       if (err instanceof multer.MulterError) {
         res.json(MulterError);
