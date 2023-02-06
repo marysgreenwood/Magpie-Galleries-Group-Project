@@ -154,6 +154,10 @@ a {
   line-height: 10px;
   margin-top: 20px;
 }
+
+/* h4 {
+  word-wrap: anywhere;
+} */
 .userart {
   object-fit: contain;
   width: 100%;
@@ -163,6 +167,9 @@ a {
   border: 5px solid white;
 }
 
+#image-display {
+  overflow-wrap: break-word;
+}
 #dashboard-menu {
   text-align: right;
   margin-top: 10px;
