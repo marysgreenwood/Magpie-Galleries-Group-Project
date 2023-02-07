@@ -1,19 +1,22 @@
 # Magpie Gallery
+
 <img src="./public/img/magpie.jpg" alt="Picture of Magpie Gallery App" width="100%">
 
 ## Description
 
 This art-sharing application allows artists to upload their work and allows art enthusiasts to view the work of contemporary artists.
 
-Demo: https://app.castify.com/view/54357c51-0887-4612-a306-ccbd7d3f3562
+Demo: https://app.castify.com/view/410ae903-0278-4d1b-a54d-40b75f1a74ed
 
 ## Table of Contents
-  - [Getting Started](#getting-started)
-  - [Technology](#technology)
-  - [Authors](#authors)
-  - [License](#license)
+
+- [Getting Started](#getting-started)
+- [Technology](#technology)
+- [Authors](#authors)
+- [License](#license)
 
 ## Getting Started
+
 <a href="placeholder">Magpie Gallery</a>
 <br></br>
 <a href="https://github.com/marysgreenwood/Spaghetti-on-the-Wall-Project">Magpie Gallery GitHub Repository</a>
@@ -21,6 +24,7 @@ Demo: https://app.castify.com/view/54357c51-0887-4612-a306-ccbd7d3f3562
 To get started click the the link "Magpie Gallery" located in this section directly above this text. Once you have been redirect to Magpie Gallery you will be faced with an intuitive user experice. Explore the many options available to on the main page. After exploring, feel free to return here to follow the link to our GitHub repository to examine our process & code in more detail.
 
 ## Technology
+
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
@@ -38,15 +42,15 @@ To get started click the the link "Magpie Gallery" located in this section direc
 We utilized the following node modules:
 <br></br>
 
-* body-parser
-* cookie-parser
-* morgan
-* hbs
-* bcrypt
-* dcrypt
-* dotenv
-* express-session
-* express-handlebars
+- body-parser
+- cookie-parser
+- morgan
+- hbs
+- bcrypt
+- dcrypt
+- dotenv
+- express-session
+- express-handlebars
 
 We also used a new technology, for us, Multer. Multer is a npm package that makes it easy to upload files by handling multipart/form-data.
 <br></br>
@@ -54,43 +58,51 @@ We also used a new technology, for us, Multer. Multer is a npm package that make
 ## Authors
 
 ### Doyle, Alex
+
 <br></br>
 <img src="https://avatars.githubusercontent.com/u/112982480?v=4" alt="Picture of man & woman" width="200" height="200">
 <br></br>
 <a href="https://github.com/itsDoyle">GitHub: itsDoyle</a>
 
 ### Flock, Lexie
+
 <br></br>
 <img src="https://avatars.githubusercontent.com/u/112924662?v=4" alt="Picture of bird with paint brush" width="200" height="200">
 <br></br>
 <a href="https://github.com/LexieFlock">GitHub: LexieFlock</a>
 
 ### Greenwood, Mary
+
 <br></br>
 <img src="https://avatars.githubusercontent.com/u/110069667?v=4" alt="Picture of talented woman" width="200" height="200">
 <br></br>
 <a href="https://github.com/marysgreenwood">GitHub: marysgreenwood</a>
 
 ### McMurtay, Colin
+
 <br></br>
 <img src="https://avatars.githubusercontent.com/u/112663656?v=4" alt="Picture of talented woman" width="200" height="200">
 <br></br>
 <a href="https://github.com/codingColinMcM">GitHub: codingColinMcM</a>
 
 ### Sahil, Adem
+
 <br></br>
 <img src="https://avatars.githubusercontent.com/u/72222005?v=4" alt="Picture of man with coffee" width="200" height="200">
 <br></br>
 <a href="https://github.com/ademsahil274">GitHub: ademsahil274</a>
 
 ### White, Kevin
+
 <br></br>
 <img src="https://static.wikia.nocookie.net/prankshuplaber/images/9/97/Stick_man.png/revision/latest?cb=20181211190746" alt="Picture of man" width="200" height="200">
 <br></br>
 <a href="https://github.com/ghostofthemill">GitHub: GhostoftheMill</a>
 
 ## License
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 <pre>
 The MIT License
 
