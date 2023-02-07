@@ -8,6 +8,7 @@ var session = require("express-session");
 var cookieParser = require("cookie-parser");
 var morgan = require("morgan");
 var bodyParser = require("body-parser");
+// var flash = require("connect-flash");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -26,6 +27,8 @@ app.use(
     },
   })
 );
+
+// app.use(flash() )
 
 const hbs = exphbs.create({});
 

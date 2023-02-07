@@ -167,8 +167,8 @@ a {
   border: 5px solid white;
 }
 
-#image-display {
-  overflow-wrap: break-word;
+.image-display {
+  margin-top: 50px;
 }
 #dashboard-menu {
   text-align: right;

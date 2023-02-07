@@ -1,14 +1,13 @@
-
 var container = document.querySelector("#searchResultsDisplay");
-
 
 renderSearch = (arr) => {
   for (var i = 0; i < arr.length; i++) {
     var div = document.createElement("div");
     div.setAttribute("class", "card col-md-4");
     div.innerHTML = ` <img src=${arr[i].image} alt=${arr[i].description} class="userart" />
-    <div class="container">
+    <div class="image-display">
       <h4>Title: ${arr[i].title}</h4>
+      <h4>Artist: ${arr[i].artist}</h4>
       <h4>Description: ${arr[i].description}</h4>
       <h4>Type: ${arr[i].type}</h4>
     </div>`;
@@ -28,10 +27,7 @@ var artSearch = async (event) => {
     searchResults = await response.json();
     console.log("response body", searchResults);
     renderSearch(searchResults);
-  
   }
 };
-
-
 
 document.querySelector("#searchBtn").addEventListener("click", artSearch);
