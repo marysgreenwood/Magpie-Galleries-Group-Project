@@ -9,6 +9,8 @@ var cookieParser = require("cookie-parser");
 var morgan = require("morgan");
 var bodyParser = require("body-parser");
 const { Sequelize } = require("sequelize");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+
 // var flash = require("connect-flash");
 
 const app = express();
