@@ -1,43 +1,49 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>Magpie Gallery</title>
-        <link src="/css/style.css" type="text/css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    </head>
-    <body class="container">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"
+    ></script>
+    <title>Magpie Gallery</title>
+    <link src="/css/style.css" type="text/css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="container">
 
     <div id="nav-container">
-    <nav>
-        <ul>
+      <nav>
+        <form action="/search/{{searchterm.value}}" method="get">
+          <ul>
             <!-- new post button -->
             <a href="/upload"><li class="Add"></li></a>
-            <!-- search button -->
-            <a id="searchBtn"><li type="submit" class="searchBtn"></li></a>
-            <!-- search form -->
-            <li id="userSearchForm">
-                <form>
-                    <input class="col-6 " id="userSearchInput" type="text">    
-                </form>
-            </li>
+
             <!-- login button -->
-            {{#if logged_in}} 
-            <li><a href="/dashboard">Dashboard</a></li>
-            <li id="logout">{{!--<div style="display:none;" id="logout"></div>--}}Log Out</li>
-            
+            {{#if logged_in}}
+              <li><a href="/dashboard">Dashboard</a></li>
+              <li
+                id="logout"
+              >{{!<div style="display:none;" id="logout"></div>}}Log Out</li>
+
             {{else}}
-            <li>{{!--<div style="display:none;" id="login"></div>--}}<a href="/login">Sign In</a></li>
+              <li>{{!<div style="display:none;" id="login"></div>}}<a
+                  href="/login"
+                >Sign In</a></li>
             {{/if}}
             <li><a href="/">Home</a></li>
-        </ul>
-    </nav>
+          </ul>
+        </form>
+      </nav>
     </div>
 
     {{{body}}}
-    </body>
-    <script src="/js/logout.js"></script>
-    <script src="/js/hbsearch.js"></script>
+  </body>
+  <script src="/js/logout.js"></script>
+  {{! <script src="/js/hbsearch.js"></script>   }}
 </html>

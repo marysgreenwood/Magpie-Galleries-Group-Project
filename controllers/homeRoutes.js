@@ -34,12 +34,16 @@ router.get("/dashboard", sessionChecker, async (req, res) => {
     const userArt = dbUserArt.map((userArtwork) =>
       userArtwork.get({ plain: true })
     );
-    res.render("dashboard", { userArt, logged_in: req.session.logged_in });
+    
+
+    res.render("dashboard", { userArt, logged_in: req.session.logged_in,  }, );
+    //success: req.flash("success")
+    //console.log('handlebars', success)
     //res.status(200).json(searchByUser)
-    //HOW TO DISPLAY ALL ART (FOR EACH?)
-    //res.sendFile(path.join(`${__dirname}/../views/index.html`));
+    
   } catch (err) {
     res.status(400).json(err);
+    console.log(err);
   }
 });
 

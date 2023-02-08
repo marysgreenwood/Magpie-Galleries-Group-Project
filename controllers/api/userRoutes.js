@@ -15,11 +15,13 @@ router.get("/all", async (req, res) => {
 router.post("/newUser", async (req, res) => {
   try {
     const newUser = req.body;
+    console.log("newUser", newUser);
     // create the newUser with the hashed password and save to DB
     const userData = await Users.create(newUser);
     res.status(200).json(userData);
   } catch (err) {
     res.status(400).json(err);
+    console.log("NOOOOOOO", err);
   }
 });
 
@@ -72,7 +74,7 @@ router.post("/logout", (req, res) => {
 
 // Route for user editing profile
 router.post("/edit-profile", async (req, res) => {
-  console.log(req.body);
+  console.log("profile update", req.body);
   try {
     const userUpdate = await Users.update(req.body, {
       where: {
@@ -80,7 +82,8 @@ router.post("/edit-profile", async (req, res) => {
       },
       individualHooks: true,
     });
-    console.log(userUpdate);
+    console.log("profile updated");
+    //req.flash("success", "Profile updated successfully");
     res.redirect("/dashboard");
   } catch (err) {
     res.status(400).json(err);
@@ -88,4 +91,17 @@ router.post("/edit-profile", async (req, res) => {
   }
 });
 
+//delete route to remove user
+router.delete("/:id", async (req, res) => {
+  try {
+    const deletedUser = await Users.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(deletedUser);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 module.exports = router;

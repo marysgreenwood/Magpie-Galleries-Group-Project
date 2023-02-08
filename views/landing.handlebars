@@ -1,10 +1,23 @@
 <!-- website title and large image on landing page -->
-        <link href="/css/style.css" type="text/css" rel="stylesheet">
-        <div class="splash">
-            <h1>Magpie Gallery</h1>
-            <h2>Searching for hidden gems</h2>
-        </div>
-        
-     <script src="/js/hblanding.js"></script>
-  
+<link href="/css/style.css" type="text/css" rel="stylesheet" />
+<div class="splash">
+  <h1>Magpie Gallery</h1>
+  <h2>Searching for hidden gems</h2>
+</div>
 
+<form action="/api/art/search/" method="get">
+  <ul>
+    <!-- search form -->
+    <li id="userSearchForm">
+      <input class="col-6" id="userSearchInput" type="text" name="searchterm" />
+    </li>
+    <!-- search button -->
+    <li type="submit" id="searchBtn" class="searchBtn btn-primary"></li>
+  </ul>
+</form>
+
+<div id="searchResultsDisplay" class="container row">
+</div>
+
+{{! <script src="/js/hblanding.js"></script> }}
+<script src="/js/hbsearch.js"> </script>
