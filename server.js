@@ -8,6 +8,7 @@ var session = require("express-session");
 var cookieParser = require("cookie-parser");
 var morgan = require("morgan");
 var bodyParser = require("body-parser");
+const { Sequelize } = require("sequelize");
 // var flash = require("connect-flash");
 
 const app = express();
@@ -25,6 +26,9 @@ app.use(
     cookie: {
       expires: 600000,
     },
+    store: new SequelizeStore({
+      db: sequelize
+    }),
   })
 );
 
