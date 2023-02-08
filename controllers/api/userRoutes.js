@@ -53,7 +53,7 @@ router.post("/login", async (req, res) => {
       req.session.logged_in = true;
       console.log(req.session);
     });
-    res.render("dashboard");
+    res.status(200).send;
   } catch (err) {
     res.status(400).json(err);
   }
