@@ -17,7 +17,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // initialize cookie-parser to allow us access the cookies stored in the browser.
-app.use(cookieParser());
+// app.use(cookieParser());
 // initialize express-session to allow us track the logged-in user across sessions.
 app.use(
   session({
