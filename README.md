@@ -12,7 +12,7 @@ This art-sharing application allows artists to upload their work and allows art 
   - [License](#license)
 
 ## Getting Started
-<a href="placeholder">Magpie Gallery</a>
+<a href=https://murmuring-ocean-73396.herokuapp.com>Magpie Gallery</a>
 <br></br>
 <a href="https://github.com/marysgreenwood/Spaghetti-on-the-Wall-Project">Magpie Gallery GitHub Repository</a>
 <br></br>
