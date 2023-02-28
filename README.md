@@ -16,8 +16,7 @@ Demo: https://app.castify.com/view/410ae903-0278-4d1b-a54d-40b75f1a74ed
 - [License](#license)
 
 ## Getting Started
-
-<a href="placeholder">Magpie Gallery</a>
+<a href=https://murmuring-ocean-73396.herokuapp.com>Magpie Gallery</a>
 <br></br>
 <a href="https://github.com/marysgreenwood/Spaghetti-on-the-Wall-Project">Magpie Gallery GitHub Repository</a>
 <br></br>
@@ -95,7 +94,7 @@ We also used a new technology, for us, Multer. Multer is a npm package that make
 ### White, Kevin
 
 <br></br>
-<img src="https://static.wikia.nocookie.net/prankshuplaber/images/9/97/Stick_man.png/revision/latest?cb=20181211190746" alt="Picture of man" width="200" height="200">
+<img src="https://avatars.githubusercontent.com/u/112919123?v=4" alt="Picture of man" width="200" height="200">
 <br></br>
 <a href="https://github.com/ghostofthemill">GitHub: GhostoftheMill</a>
 
