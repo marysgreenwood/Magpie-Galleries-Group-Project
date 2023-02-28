@@ -1,23 +1,17 @@
+<link rel="stylesheet" href="/css/style.css">
+{{!-- {{#if success}}
+<div id="flashmessage">{{success}}</div>
+{{/if}} --}}
 <div class="container row">
-    <h1>Hello, Welcome to your Dashboard</h1>
+    <h1>Welcome to your Dashboard</h1>
 </div>
-<div class="card">
-    <div class="container">
-        <p>Add Art</p>
-    </div>
+<div id="dashboard-menu">
+<ul>
+        <li class="spaceleft"><a href="/edit-profile">Edit Profile</a></li>
+</ul>
 </div>
-<div class="card">
-    <div class="container">
-        <p>Edit Profile</p>
-    </div>
-</div>
-<div class="card">
-    <div class="container">
-        <p>Add Art</p>
-    </div>
-</div>
-<div class="card">
-    <div class="container">
-        <p>Add Art</p>
-    </div>
+<div class="container row">
+    {{#each userArt as |art|}}
+       {{> image}}
+    {{/each}}
 </div>
